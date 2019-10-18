@@ -1,25 +1,5 @@
----
-name: 开始
-route: /
----
-
-import { Playground } from 'docz';
-import RippleDemo from './RippleDemo';
-
-# 开始使用
-
-## 安装
-
-```shell
-yarn add @sinoui/ripple
-```
-
-## 快速使用
-
-### useRipple
-
-```tsx
-import { useRipple } from '@sinoui/ripple';
+import React from 'react';
+import { useRipple } from '../src';
 
 interface Props {
   children?: React.ReactNode;
@@ -38,8 +18,3 @@ function RippleButton(props: Props) {
 export default function RippleDemo() {
   return <RippleButton>这是按钮</RippleButton>;
 }
-```
-
-<Playground>
-  <RippleDemo />
-</Playground>
