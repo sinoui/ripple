@@ -23,4 +23,8 @@ export interface RippleConfig {
    * 指定水波纹的颜色
    */
   color?: string;
+  /**
+   * 不可用状态
+   */
+  disabled?: boolean;
 }
