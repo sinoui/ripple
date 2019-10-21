@@ -3,20 +3,22 @@ name: 开始
 route: /
 ---
 
+import { useRef, useEffect } from 'react';
 import { Playground } from 'docz';
 import RippleDemo from './RippleDemo';
+import { useRipple, enableRipple } from '../src';
+import SimpleButton from './SimpleButton';
+import CenterRippleDemo from './CenterRippleDemo';
 
-# 开始使用
+`@sinoui/ripple`实现了水波纹的点击效果。
 
-## 安装
+## 安装依赖
 
 ```shell
 yarn add @sinoui/ripple
 ```
 
-## 快速使用
-
-### useRipple
+## 入门示例
 
 ```tsx
 import { useRipple } from '@sinoui/ripple';
@@ -26,9 +28,7 @@ interface Props {
 }
 
 function RippleButton(props: Props) {
-  const ref = useRipple<HTMLButtonElement>({
-    color: 'red',
-  });
+  const ref = useRipple<HTMLButtonElement>();
 
   return (
     <button type="button" className="sinoui-button" {...props} ref={ref} />
@@ -42,4 +42,298 @@ export default function RippleDemo() {
 
 <Playground>
   <RippleDemo />
+</Playground>
+
+## useRipple
+
+使用水波纹效果的 hook。
+
+`useRipple()`可以接收两个参数:
+
+- `options` ripple 的配置项，主要包括：
+  - `center` - 是否居中显示 ripple 效果。默认为 false，表示 ripple 的起始位置是鼠标点击的位置。如果设置为 true，则 ripple 的起始位置为元素的中心位置。
+  - `enableKeyboardFocus` - 是否启用键盘 focus 的 ripple 效果。默认为 true，表示元素通过键盘（例如 tab）事件获取到焦点后，有 ripple 效果。
+  - `rippleLayoutClassName` - ripple 布局容器的 css 类名。
+  - `rippleClassName` - ripple 元素的 css 类名。
+  - `fixSize` - 是否固定 ripple 的尺寸。默认为 false。如果设置为 true，则会计算 ripple 的尺寸
+  - `color` - 设置水波纹效果的颜色（默认为`currentColor`）
+- `disabled` 不可用状态。**注意：新的设计 disabled 已经放入 config 中处理**
+
+### 简单使用
+
+`SimpleButton.tsx`
+
+```tsx
+import React from 'react';
+import styled from 'styled-components';
+import classNames from 'classnames';
+import { useRipple } from '@sinoui/ripple';
+
+const Wrapper = styled.button`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-color: transparent;
+  outline: none;
+  border: 0px;
+  padding: 0px;
+  vertical-align: middle;
+  appearance: none;
+  text-decoration: none;
+  &::-moz-focus-inner {
+    border-style: none;
+  }
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.87);
+  padding: 8px 16px;
+  min-width: 88px;
+  min-height: 36px;
+  box-sizing: border-box;
+  margin: 8px;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.12);
+  }
+
+  &.sinoui-button-disabled {
+    pointer-events: none;
+    cursor: default;
+  }
+`;
+
+function SimpleButton(props) {
+  const rippleRef = useRipple();
+  const { disabled } = props;
+  return (
+    <Wrapper
+      className={classNames('sinoui-button', {
+        'sinoui-button-disabled': disabled,
+      })}
+      ref={rippleRef}
+      {...props}
+    />
+  );
+}
+```
+
+`Demo.tsx`
+
+```tsx
+function Demo() {
+  return <SimpleButton>按钮</SimpleButton>;
+}
+```
+
+<Playground>
+  <SimpleButton>按钮</SimpleButton>
+</Playground>
+
+### 键盘获取焦点时的 ripple 效果
+
+<Playground>
+  <SimpleButton>按钮一</SimpleButton>
+  <SimpleButton>按钮二</SimpleButton>
+</Playground>
+
+### 居中显示 ripple
+
+在使用 useRipple 时,配置项中添加`center:true`:
+
+```tsx
+import styled from 'styled-components';
+import classNames from 'classnames';
+import { useRipple } from '@sinoui/ripple';
+
+const Wrapper = styled.button`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-color: transparent;
+  outline: none;
+  border: 0px;
+  padding: 0px;
+  vertical-align: middle;
+  appearance: none;
+  text-decoration: none;
+  &::-moz-focus-inner {
+    border-style: none;
+  }
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.87);
+  width: 20px;
+  height: 20px;
+  box-sizing: border-box;
+  margin: 8px;
+  overflow: visible;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.12);
+  }
+
+  &.sinoui-icon-button-disabled {
+    pointer-events: none;
+    cursor: default;
+  }
+
+  .sinoui-icon-button__ripple-layout {
+    left: -14px;
+    top: -14px;
+    width: 48px;
+    height: 48px;
+  }
+
+  .sinoui-icon-button__ripple {
+    width: 48px;
+    height: 48px;
+  }
+`;
+
+function CenterRipple(props) {
+  const rippleRef = useRipple({
+    center: true,
+    rippleLayoutClassName: 'sinoui-icon-button__ripple-layout',
+    rippleClassName: 'sinoui-icon-button__ripple',
+    fixSize: true,
+  });
+  const { disabled } = props;
+  return (
+    <Wrapper
+      className={classNames('sinoui-icon-button', {
+        'sinoui-icon-button-disabled': disabled,
+      })}
+      ref={rippleRef}
+      {...props}
+    />
+  );
+}
+
+export default function CenterRippleDemo() {
+  return <CenterRipple>Avatar</CenterRipple>;
+}
+```
+
+<Playground>
+  <CenterRippleDemo />
+</Playground>
+
+上述示例中，使用`{center:true}`使水波纹效果从中间展开，为了效果更加美观，使用`{fixSize:true}`固定了 ripple 的效果；
+并且分别使用`rippleLayoutClassName`、`rippleClassName`自定义了 ripple 及其布局的样式。
+
+### 设置 ripple 的颜色
+
+```tsx
+import { useRipple } from '@sinoui/ripple';
+
+function RippleButton(props) {
+  const ref = useRipple({ color: 'red' });
+
+  return (
+    <button
+      type="button"
+      className="sinoui-button"
+      style={{ outline: 'none' }}
+      {...props}
+      ref={ref}
+    />
+  );
+}
+
+export default function RippleDemo() {
+  return <RippleButton>这是按钮</RippleButton>;
+}
+```
+
+<Playground>
+  {()=>{
+    function RippleButton(props) {
+    const ref = useRipple({ color: 'red' });
+
+    return (
+      <button
+        type="button"
+        className="sinoui-button"
+        style={{ outline: 'none',border:'none' }}
+        {...props}
+        ref={ref}
+      />
+    );
+    }
+
+    return <RippleButton>按钮</RippleButton>
+
+}}
+
+</Playground>
+
+### 不可用的状态
+
+<Playground>
+  <SimpleButton disabled>不可用按钮</SimpleButton>
+</Playground>
+
+## `enableRipple`的使用
+
+除了`useRipple`外，我们还有另外一种使用方式--`enableRipple`。
+
+```tsx
+import { enableRipple } from '@sinoui/ripple';
+
+function EnableRippleButton(props) {
+  const rippleRef = useRef();
+  const rippleConfig = {};
+
+  useEffect(() => {
+    const rippleElement = enableRipple(rippleRef.current, rippleConfig);
+
+    return () => {
+      rippleElement.cancel();
+    };
+  });
+
+  return (
+    <button
+      type="button"
+      className="sinoui-button"
+      style={{ outline: 'none', border: 'none' }}
+      {...props}
+      ref={rippleRef}
+    />
+  );
+}
+
+export default function Demo() {
+  return <EnableRippleButton>按钮</EnableRippleButton>;
+}
+```
+
+<Playground>
+  {()=>{
+    function EnableRippleButton(props) {
+      const rippleRef = useRef();
+      const rippleConfig = {};
+
+      useEffect(() => {
+        const rippleElement = enableRipple(rippleRef.current, rippleConfig);
+        return () => {
+          rippleElement.cancel();
+        };
+      });
+
+      return (
+        <button
+          type="button"
+          className="sinoui-button"
+          style={{ outline: 'none', border: 'none' }}
+          {...props}
+          ref={rippleRef}
+        />
+      );
+    }
+
+    return <EnableRippleButton>按钮</EnableRippleButton>
+
+}}
+
 </Playground>

@@ -6,9 +6,7 @@ interface Props {
 }
 
 function RippleButton(props: Props) {
-  const ref = useRipple<HTMLButtonElement>({
-    color: 'red',
-  });
+  const ref = useRipple<HTMLButtonElement>();
 
   return (
     <button type="button" className="sinoui-button" {...props} ref={ref} />

@@ -46,7 +46,8 @@
   "peerDependencies": {
     "react": ">=16.8.0",
     "react-dom": "^16.8.2",
-    "styled-components": ">=4.0.0"
+    "styled-components": ">=4.0.0",
+    "classnames": "^2.2.0"
   },
   "files": [
     "dist",
