@@ -146,6 +146,10 @@ export default class RippleRender {
     this.timeouts = [];
   }
 
+  public setConfig(rippleConfig: RippleConfig) {
+    this.rippleConfig = rippleConfig;
+  }
+
   /**
    * 显示focus状态下的ripple效果，为pulsate效果。
    *

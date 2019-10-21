@@ -3,7 +3,7 @@ name: 开始
 route: /
 ---
 
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { Playground } from 'docz';
 import RippleDemo from './RippleDemo';
 import { useRipple, enableRipple } from '../src';
@@ -270,7 +270,18 @@ export default function RippleDemo() {
 ### 不可用的状态
 
 <Playground>
-  <SimpleButton disabled>不可用按钮</SimpleButton>
+  {() => {
+    const [disabled, setDisabled] = useState(false);
+
+    return <>
+      <div>
+        <label>禁用: <input type="checkbox" checked={disabled} onClick={() => setDisabled(!disabled)} /></label>
+      </div>
+      <SimpleButton disabled={disabled}>不可用按钮</SimpleButton>
+    </>;
+
+}}
+
 </Playground>
 
 ## `enableRipple`的使用

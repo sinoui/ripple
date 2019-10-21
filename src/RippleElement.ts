@@ -22,7 +22,7 @@ export default class RippleElement {
 
   private eventTriggers: Array<{
     name: string;
-    // tslint:disable-next-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     callback: any;
   }> = [];
 
@@ -42,6 +42,14 @@ export default class RippleElement {
     this.enable();
   }
 
+  public setConfig(rippleConfig: RippleConfig = defaultRippleConfig) {
+    this.rippleConfig = {
+      ...defaultRippleConfig,
+      ...rippleConfig,
+    };
+    this.rippleRender.setConfig(this.rippleConfig);
+  }
+
   /**
    * 取消ripple效果
    */
@@ -59,6 +67,9 @@ export default class RippleElement {
    * 禁用ripple效果
    */
   public disable() {
+    if (this.enabled === false) {
+      return;
+    }
     this.enabled = false;
     this.cancel();
   }
