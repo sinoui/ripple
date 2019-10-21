@@ -3,6 +3,8 @@ import { RippleConfig } from './types';
 import enableRipple from './enableRipple';
 import RippleElement from './RippleElement';
 
+const defaultConfig = {};
+
 /**
  * 使用水波纹效果
  *
@@ -12,7 +14,7 @@ export default function useRipple<T extends HTMLElement>(
   config: RippleConfig & {
     position?: 'absolute' | 'relative' | 'fixed' | 'static';
     color?: string;
-  } = {},
+  } = defaultConfig,
   disabled?: boolean,
 ) {
   const domRef = useRef<T>();
