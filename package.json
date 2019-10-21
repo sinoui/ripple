@@ -6,6 +6,14 @@
   "umd:main": "dist/ripple.umd.production.js",
   "module": "dist/ripple.esm.js",
   "typings": "dist/index.d.ts",
+  "homepage": "https://sinoui.github.io/ripple",
+  "bugs": {
+    "url": "https://github.com/sinoui/ripple/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sinoui/ripple.git"
+  },
   "scripts": {
     "start": "ts-lib-tools watch",
     "test": "ts-lib-tools test",
