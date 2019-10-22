@@ -20,7 +20,7 @@ export default function useRipple<T extends HTMLElement>(
 ) {
   const configRef = useRef(config);
   const isDisabled = config.disabled || disabled;
-  const domRef = useRef<T>();
+  const domRef = useRef<T | null>(null);
   const rippleRef = useRef<RippleElement | null>(null);
 
   useEffect(() => {
