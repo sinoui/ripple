@@ -1,5 +1,9 @@
 # @sinoui/ripple 版本变更记录
 
+## v1.0.1 - 2019.10.22
+
+- fix: 修复 useRipple 返回的 ref 类型声明不正确的缺陷
+
 ## v1.0.0 - 2019.10.21
 
 - breakchange: useRipple 第二个参数 disabled 移到第一个参数 config 中 #2
