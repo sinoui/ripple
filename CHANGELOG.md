@@ -1,5 +1,9 @@
 # @sinoui/ripple 版本变更记录
 
+## v1.0.2 - 2019.10.23
+
+- fix: 修复取消 ripple 效果时报 keyboardFocusHandler.clean 不是函数的缺陷
+
 ## v1.0.1 - 2019.10.22
 
 - fix: 修复 useRipple 返回的 ref 类型声明不正确的缺陷
