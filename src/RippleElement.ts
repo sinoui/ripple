@@ -16,7 +16,7 @@ const defaultRippleConfig = {
 export default class RippleElement {
   private rippleRender: RippleRender;
 
-  private keyboardFocusHandler: KeyboardFocusWrapper = {} as any;
+  private keyboardFocusHandler?: KeyboardFocusWrapper;
 
   private rippleConfig: RippleConfig;
 

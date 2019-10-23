@@ -40,7 +40,7 @@ const withRipple = (rippleConfig?: RippleConfig) => {
 
       public componentWillUnmount() {
         if (this.rippleElement) {
-          this.rippleElement.cancel();
+          this.rippleElement.disable();
         }
       }
 
