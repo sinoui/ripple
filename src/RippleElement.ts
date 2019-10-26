@@ -103,11 +103,28 @@ export default class RippleElement {
     }
   }
 
+  private ignoringMouseDown = false;
+
+  /**
+   * 开始水波纹效果
+   */
+  private start = (event: MouseEvent | TouchEvent) => {
+    if (event && event.type === 'mousedown' && this.ignoringMouseDown) {
+      this.ignoringMouseDown = false;
+      return;
+    }
+    if (event && event.type === 'touchstart') {
+      this.ignoringMouseDown = true;
+    }
+
+    this.rippleRender.addRipple();
+  };
+
   private enableDesktopClickRipple() {
     this.eventTriggers.push(
       {
         name: 'mousedown',
-        callback: this.rippleRender.addRipple,
+        callback: this.start,
       },
       {
         name: 'mouseup',
@@ -124,7 +141,7 @@ export default class RippleElement {
     this.eventTriggers.push(
       {
         name: 'touchstart',
-        callback: this.rippleRender.addRipple,
+        callback: this.start,
       },
       {
         name: 'touchmove',
