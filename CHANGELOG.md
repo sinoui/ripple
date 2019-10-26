@@ -1,5 +1,9 @@
 # @sinoui/ripple 版本变更记录
 
+## v1.0.3 - 2019.10.26
+
+- fix: 修复在移动端点击出现双倍水波纹的缺陷 ( #4 )
+
 ## v1.0.2 - 2019.10.23
 
 - fix: 修复取消 ripple 效果时报 keyboardFocusHandler.clean 不是函数的缺陷
