@@ -9,7 +9,15 @@ function RippleButton(props: Props) {
   const ref = useRipple<HTMLButtonElement>();
 
   return (
-    <button type="button" className="sinoui-button" {...props} ref={ref} />
+    <button
+      type="button"
+      className="sinoui-button"
+      {...props}
+      ref={ref}
+      style={{
+        '-webkit-tap-highlight-color': 'transparent',
+      }}
+    />
   );
 }
 

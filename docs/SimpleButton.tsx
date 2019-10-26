@@ -34,6 +34,8 @@ const Wrapper = styled.button`
     pointer-events: none;
     cursor: default;
   }
+
+  -webkit-tap-highlight-color: transparent;
 `;
 
 export default function SimpleButton(props) {
