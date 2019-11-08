@@ -1,9 +1,6 @@
-# ripple
+# ripple [![npm version](https://img.shields.io/npm/v/@sinoui/ripple)](https://www.npmjs.com/package/@sinoui/ripple) [![downloads](https://img.shields.io/npm/dm/@sinoui/ripple)](https://www.npmjs.com/package/@sinoui/ripple)
 
-[![npm version](https://img.shields.io/npm/v/@sinoui/ripple)](https://www.npmjs.com/package/@sinoui/ripple)
-[![downloads](https://img.shields.io/npm/dm/@sinoui/ripple)](https://www.npmjs.com/package/@sinoui/ripple)
-
-水波纹效果。 [文档](https://sinoui.github.io/ripple)
+涟漪效果。遵循 [Material Design States](https://material.io/design/interaction/states.html#usage) 规范。 [文档](https://sinoui.github.io/ripple)
 
 ## 安装
 
