@@ -1,10 +1,10 @@
 {
   "vendors.js": "/ripple/static/js/vendors.e9f7ea93.js",
-  "vendors.js.map": "/ripple/static/js/vendors.6bed09d584e383729f7b.js.map",
-  "app.js": "/ripple/static/js/app.6bed09d584e383729f7b.js",
-  "app.js.map": "/ripple/static/js/app.6bed09d584e383729f7b.js.map",
+  "vendors.js.map": "/ripple/static/js/vendors.5b5a062e1253fc856984.js.map",
+  "app.js": "/ripple/static/js/app.5b5a062e1253fc856984.js",
+  "app.js.map": "/ripple/static/js/app.5b5a062e1253fc856984.js.map",
   "docs-index.js": "/ripple/static/js/docs-index.2e65b07f.js",
-  "docs-index.js.map": "/ripple/static/js/docs-index.6bed09d584e383729f7b.js.map",
+  "docs-index.js.map": "/ripple/static/js/docs-index.5b5a062e1253fc856984.js.map",
   "404.html": "/ripple/404.html",
   "index.html": "/ripple/index.html"
 }
