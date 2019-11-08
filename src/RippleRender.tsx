@@ -209,6 +209,12 @@ export default class RippleRender {
   public clean() {
     clearTimeout(this.containerRectTimeout);
     this.timeouts.forEach((timeout) => clearTimeout(timeout));
+    const { rippleLayout } = this;
+    if (rippleLayout) {
+      rippleLayout.querySelectorAll('.sinoui-ripple').forEach((item) => {
+        rippleLayout.removeChild(item);
+      });
+    }
   }
 
   private clearContainerRect() {

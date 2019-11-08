@@ -3,12 +3,13 @@ name: 开始
 route: /
 ---
 
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState, useCallback } from 'react';
 import { Playground } from 'docz';
 import RippleDemo from './RippleDemo';
 import { useRipple, enableRipple } from '../src';
 import SimpleButton from './SimpleButton';
 import CenterRippleDemo from './CenterRippleDemo';
+import styled from 'styled-components';
 
 ## @sinoui/ripple
 
@@ -53,16 +54,15 @@ export default function RippleDemo() {
 
 使用水波纹效果的 hook。
 
-`useRipple()`可以接收两个参数:
+`useRipple(config)`可以接收的 `config` 参数是一个有下列属性的对象，表示的是 ripple 的配置项：
 
-- `config` ripple 的配置项，主要包括：
-  - `center` - 是否居中显示 ripple 效果。默认为 false，表示 ripple 的起始位置是鼠标点击的位置。如果设置为 true，则 ripple 的起始位置为元素的中心位置。
-  - `enableKeyboardFocus` - 是否启用键盘 focus 的 ripple 效果。默认为 true，表示元素通过键盘（例如 tab）事件获取到焦点后，有 ripple 效果。
-  - `rippleLayoutClassName` - ripple 布局容器的 css 类名。
-  - `rippleClassName` - ripple 元素的 css 类名。
-  - `fixSize` - 是否固定 ripple 的尺寸。默认为 false。如果设置为 true，则会计算 ripple 的尺寸
-  - `color` - 设置水波纹效果的颜色（默认为`currentColor`）
-- `disabled` 不可用状态。**注意：新的设计 disabled 已经放入 config 中处理**
+- `center` - 是否居中显示 ripple 效果。默认为 false，表示 ripple 的起始位置是鼠标点击的位置。如果设置为 true，则 ripple 的起始位置为元素的中心位置。
+- `enableKeyboardFocus` - 是否启用键盘 focus 的 ripple 效果。默认为 true，表示元素通过键盘（例如 tab）事件获取到焦点后，有 ripple 效果。
+- `rippleLayoutClassName` - ripple 布局容器的 css 类名。
+- `rippleClassName` - ripple 元素的 css 类名。
+- `fixSize` - 是否固定 ripple 的尺寸。默认为 false。如果设置为 true，则会计算 ripple 的尺寸
+- `color` - 设置水波纹效果的颜色（默认为`currentColor`）
+- `disabled` 不可用状态。
 
 ### 简单使用
 
@@ -350,6 +350,43 @@ export default function Demo() {
 
     return <EnableRippleButton>按钮</EnableRippleButton>
 
+}}
+
+</Playground>
+
+## 禁用、启用 ripple 效果
+
+```tsx
+function Demo() {
+  const [disabled, setDisabled] = useState(false);
+
+  const ref = useRipple({ disabled });
+
+  return <Button ref={ref}>点击我{disabled?: '启用' : '禁用'}水波纹效果</Button>;
+}
+```
+
+<Playground>
+{() => {
+  
+  const Button = styled.div({
+    border: '1px solid red',
+    width: 200,
+    height: 50,
+    textAlign: 'center',
+    lineHeight: '100%'
+  });
+  const XButton = () => {
+    const [disabled, setDisabled] = useState(false);
+    const ref = useRipple({ disabled });
+    const handleClick = useCallback(() => {
+      requestAnimationFrame(() => {
+        setDisabled(prev => !prev)
+      })
+    }, []);
+    return <Button ref={ref} onClick={handleClick}>点击我{disabled ? '启用' : '禁用'} ripple 效果</Button>;
+  }
+  return <XButton />;
 }}
 
 </Playground>
