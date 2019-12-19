@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { keyframes, createGlobalStyle, css } from 'styled-components';
 import React from 'react';
 import { RippleConfig } from './types';
+import elementsForEach from './elementsForEach';
 
 const rippleEnter = keyframes`
   0% {
@@ -211,9 +212,12 @@ export default class RippleRender {
     this.timeouts.forEach((timeout) => clearTimeout(timeout));
     const { rippleLayout } = this;
     if (rippleLayout) {
-      rippleLayout.querySelectorAll('.sinoui-ripple').forEach((item) => {
-        rippleLayout.removeChild(item);
-      });
+      elementsForEach(
+        rippleLayout.querySelectorAll('.sinoui-ripple'),
+        (item) => {
+          rippleLayout.removeChild(item);
+        },
+      );
     }
   }
 
