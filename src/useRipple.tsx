@@ -59,7 +59,7 @@ export default function useRipple<T extends HTMLElement>(
   useEffect(() => {
     const element = domRef.current;
 
-    if (element) {
+    if (element && element.addEventListener) {
       const { position: originPosition } = getComputedStyle(element, null);
       if (originPosition === 'static') {
         element.style.position = position;

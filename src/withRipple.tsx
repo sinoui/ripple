@@ -1,3 +1,4 @@
+/* eslint-disable react/sort-comp */
 import React from 'react';
 import { findDOMNode } from 'react-dom';
 import { RippleConfig } from './types';
@@ -47,6 +48,9 @@ const withRipple = (rippleConfig?: RippleConfig) => {
       public createRippleElement() {
         // eslint-disable-next-line react/no-find-dom-node
         const element = findDOMNode(this) as HTMLElement;
+        if (element && !element.addEventListener) {
+          return;
+        }
         this.rippleElement = new RippleElement(element, rippleConfig);
         requestAnimationFrame(() => {
           const { position } = window.getComputedStyle(element);
