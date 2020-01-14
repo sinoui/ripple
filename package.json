@@ -1,6 +1,6 @@
 {
   "name": "@sinoui/ripple",
-  "version": "1.0.8",
+  "version": "1.0.7",
   "license": "MIT",
   "main": "dist/index.js",
   "description": "遵循 Material Design 的涟漪效果实现。",
@@ -73,7 +73,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
     "@testing-library/react-hooks": "^3.2.1",
-    "@types/dom-helpers": "^5.0.1",
+    "@types/dom-helpers": "^3.4.1",
     "@types/react": "^16.9.17",
     "@types/react-dom": "^16.9.4",
     "@types/react-test-renderer": "^16.9.1",
