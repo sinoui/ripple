@@ -13,6 +13,6 @@ export {
   RippleElement,
   enableKeyboardFocus,
   KeyboardFocusWrapper,
-  KeyboardFocusEventListeners,
+  /* type */ KeyboardFocusEventListeners,
   useRipple,
 };
