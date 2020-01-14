@@ -1,6 +1,6 @@
 {
   "name": "@sinoui/ripple",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "license": "MIT",
   "main": "dist/index.js",
   "description": "遵循 Material Design 的涟漪效果实现。",
