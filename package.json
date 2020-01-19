@@ -6,7 +6,7 @@
   "description": "遵循 Material Design 的涟漪效果实现。",
   "umd:main": "dist/ripple.umd.production.js",
   "module": "dist/ripple.esm.js",
-  "typings": "dist/index.d.ts",
+  "typings": "types/index.d.ts",
   "homepage": "https://sinoui.github.io/ripple",
   "bugs": {
     "url": "https://github.com/sinoui/ripple/issues"
@@ -60,6 +60,7 @@
   },
   "files": [
     "dist",
+    "types",
     "assets"
   ],
   "dependencies": {
