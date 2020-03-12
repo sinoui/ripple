@@ -117,7 +117,7 @@ export default class RippleElement {
       this.ignoringMouseDown = true;
     }
 
-    this.rippleRender.addRipple();
+    this.rippleRender.addRipple(event);
   };
 
   private enableDesktopClickRipple() {
