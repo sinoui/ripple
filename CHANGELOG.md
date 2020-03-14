@@ -1,6 +1,6 @@
 # @sinoui/ripple 版本变更记录
 
-## v1.0.11 - 未发布
+## v1.0.11 - 2020.3.14
 
 - fix: 修复不设置 center 时，useRipple 仍然从中间开始涟漪效果的 bug(#5)
 
