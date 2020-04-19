@@ -62,6 +62,8 @@ const RippleStyle = createGlobalStyle`
     pointer-events: none;
     overflow: hidden;
     z-index: 0;
+    left: 0;
+    top: 0;
   }
 
   .sinoui-button-ripple-layout {
