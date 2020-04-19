@@ -2,11 +2,9 @@
   "name": "@sinoui/ripple",
   "version": "1.0.11",
   "license": "MIT",
-  "main": "dist/index.js",
+  "main": "index.js",
   "description": "遵循 Material Design 的涟漪效果实现。",
-  "umd:main": "dist/ripple.umd.production.js",
-  "module": "dist/ripple.esm.js",
-  "typings": "types/index.d.ts",
+  "module": "esm/index.js",
   "homepage": "https://sinoui.github.io/ripple",
   "bugs": {
     "url": "https://github.com/sinoui/ripple/issues"
@@ -18,13 +16,13 @@
   "scripts": {
     "start": "ts-lib-tools watch",
     "test": "ts-lib-tools test",
-    "build": "ts-lib-tools build",
+    "build": "ts-lib-tools build --simple",
     "format": "ts-lib-tools format",
     "lint": "ts-lib-tools lint",
-    "prepublishOnly": "ts-lib-tools build",
     "doc:dev": "docz dev",
     "doc:build": "docz build",
-    "doc:publish": "docz build && gh-pages -d .docz/dist"
+    "doc:publish": "docz build && gh-pages -d .docz/dist",
+    "release": "yarn build && yarn publish dist --tag latest"
   },
   "prettier": {
     "printWidth": 80,
@@ -58,11 +56,6 @@
     "react-dom": "^16.8.2",
     "styled-components": ">=4.0.0"
   },
-  "files": [
-    "dist",
-    "types",
-    "assets"
-  ],
   "dependencies": {
     "@babel/polyfill": "^7.6.0",
     "@babel/runtime": "^7.6.3",
@@ -100,5 +93,7 @@
     "tsconfig-paths-webpack-plugin": "^3.2.0",
     "typescript": "^3.8.3",
     "webpack-docz-ghpages-plugin": "^0.11.0"
-  }
+  },
+  "types": "index.d.ts",
+  "sideEffects": false
 }

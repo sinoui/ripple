@@ -48,6 +48,10 @@ function Button({ disabled, ...rest }) {
 
 开启 vscode 的 jest 插件，会在文件变化时自动运行单元测试。
 
+### `yarn release`
+
+发布库到 npm 中的命令：`yarn release`。
+
 ### 预览文档
 
 ```shell
