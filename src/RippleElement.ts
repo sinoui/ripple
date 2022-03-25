@@ -1,3 +1,4 @@
+import isMobile from 'is-mobile';
 import RippleRender from './RippleRender';
 import enableKeyboardFocus from './enableKeyboardFocus';
 import KeyboardFocusWrapper from './KeyboardFocusWrapper';
@@ -27,6 +28,8 @@ export default class RippleElement {
   }> = [];
 
   private enabled = false;
+
+  private mobile = isMobile();
 
   constructor(
     private element: HTMLElement,
@@ -86,7 +89,9 @@ export default class RippleElement {
     this.enabled = true;
 
     this.enableDesktopClickRipple();
-    this.enableMobileTouchRipple();
+    if (this.mobile) {
+      this.enableMobileTouchRipple();
+    }
 
     this.eventTriggers.forEach(({ name, callback }) => {
       this.element.addEventListener(name, callback, false);

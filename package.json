@@ -1,6 +1,6 @@
 {
   "name": "@sinoui/ripple",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "license": "MIT",
   "main": "index.js",
   "description": "遵循 Material Design 的涟漪效果实现。",
@@ -60,6 +60,7 @@
     "@babel/polyfill": "^7.6.0",
     "@babel/runtime": "^7.6.3",
     "dom-helpers": "^3.4.0",
+    "is-mobile": "^3.1.1",
     "keycode": "^2.2.0",
     "warning": "^4.0.3"
   },

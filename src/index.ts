@@ -5,7 +5,7 @@ import enableRipple from './enableRipple';
 import withRipple from './withRipple';
 import useRipple from './useRipple';
 
-export type { KeyboardFocusEventListeners } from './KeyboardFocusWrapper';
+export { KeyboardFocusEventListeners } from './KeyboardFocusWrapper';
 export {
   enableRipple,
   withRipple,

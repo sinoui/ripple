@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import keycode from 'keycode';
+import isMobile from 'is-mobile';
 import {
   detectKeyboardFocus,
   focusKeyPressed,
@@ -25,6 +26,8 @@ export default class KeyboardFocusWrapper {
     name: string;
     callback: any;
   }>;
+
+  private mobile = isMobile();
 
   public readonly keyboardFocusCheckTime: number = 50;
 
@@ -58,10 +61,6 @@ export default class KeyboardFocusWrapper {
         callback: this.onBlur,
       },
       {
-        name: 'touchstart',
-        callback: this.onBlur,
-      },
-      {
         name: 'blur',
         callback: this.onBlur,
       },
@@ -74,6 +73,13 @@ export default class KeyboardFocusWrapper {
         callback: this.onKeyUp,
       },
     ];
+
+    if (this.mobile) {
+      this.eventTriggers.push({
+        name: 'touchstart',
+        callback: this.onBlur,
+      });
+    }
 
     this.eventTriggers.forEach(({ name, callback }) =>
       this.element.addEventListener(name, callback, false),
